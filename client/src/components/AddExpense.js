@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const AddExpense = () => {
   const [formData, setFormData] = useState({
@@ -26,7 +27,7 @@ const AddExpense = () => {
 
     try {
       await axios.post('/expenses', formData);
-      alert('Expense added!');
+      toast.success('Expense added!');
       setFormData({ title: '', amount: '', category: '' });
     } catch (err) {
       console.error(err);
